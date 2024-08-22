@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject gameOverScreen;
     public GameObject winScreen;
+    public GameObject pauseScreen;
 
     public bool playerWin;
     public bool playerAlive;
@@ -40,6 +41,16 @@ public class GameManager : MonoBehaviour
                 RestartGame();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && pauseScreen.activeSelf == false)
+        {
+            pauseScreen.SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape) && pauseScreen.activeSelf == true)
+        {
+            pauseScreen.SetActive(false);
+        }
     }
 
     public void GameOver()
@@ -50,5 +61,10 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void CloseGame()
+    {
+        Application.Quit();
     }
 }
