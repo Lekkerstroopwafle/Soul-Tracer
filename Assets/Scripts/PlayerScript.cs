@@ -19,8 +19,11 @@ public class PlayerScript : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
     }
 
-    private void Update()
+    public void PlayerTakeDamage(int damage)
     {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+
         if (currentHealth <= 0)
         {
             gameManage.playerAlive = false;
@@ -28,11 +31,5 @@ public class PlayerScript : MonoBehaviour
             playerCam.playerAlive = false;
             gunSys.playerAlive = false;
         }
-    }
-
-    public void PlayerTakeDamage(int damage)
-    {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
     }
 }
