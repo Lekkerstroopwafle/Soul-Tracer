@@ -9,6 +9,8 @@ public class Dialogue : MonoBehaviour
     public string[] lines;
     public float textSpeed;
 
+    public GameObject nextArrow;
+
     public int index;
 
     // Start is called before the first frame update
@@ -21,11 +23,17 @@ public class Dialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (textComponent.text == lines[index])
+        {
+            nextArrow.SetActive(true);
+        }
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             if (textComponent.text == lines[index])
             {
                 NextLine();
+                nextArrow.SetActive(false);
             }
             else
             {
